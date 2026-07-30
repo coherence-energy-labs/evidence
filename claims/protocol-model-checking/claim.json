@@ -1,0 +1,9 @@
+{
+  "claim": "15 communication-protocol specifications are formally model-checked (TLA+/TLC) with an active attacker in the model, covering capability grants, device pairing, onion routing, and device-mesh behavior.",
+  "status": "private-development",
+  "first_published": "2026-07-30",
+  "attestation": "The 15 specs carry explicit finite TLC instances and a pinned-toolchain manifest (tla2tools pinned by SHA-256), making them re-runnable rather than a spec pile. They live in the One Link private repository.",
+  "public_traces": [],
+  "how_to_upgrade_status": "Candidate for direct publication: model-checking specs reveal protocol *properties*, not implementation. Publishing the spec corpus with its pinned toolchain is under consideration. Counterparty verification: info@coherenceenergylabs.com.",
+  "limitations": "Model checking verifies the modeled protocol at the checked finite instance sizes; implementation conformance to the model is a separate obligation."
+}

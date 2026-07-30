@@ -1,0 +1,21 @@
+{
+  "claim": "The same program produces bit-identical results (0 ULP drift) across CPU, GPU, WebAssembly, and in-browser execution -- floating point included.",
+  "status": "verified-public",
+  "status_detail": "The discipline is publicly demonstrable in-browser today on real kernels; the exhaustive cross-substrate torture suites (six-substrate twins, 605-vector gates) live in private repositories.",
+  "first_published": "2026-07-30",
+  "evidence": [
+    {
+      "kind": "live-demo",
+      "url": "https://demos.coherenceenergylabs.com",
+      "note": "In-browser demonstrations: one function compiled to GPU (WGSL), JavaScript, and WASM producing bit-identical outputs; webcam CPU==GPU receipts; exact correctly-rounded float summation; re-executable figures that re-derive and check themselves offline."
+    },
+    {
+      "kind": "public-repo",
+      "url": "https://github.com/coherence-energy-labs/hazardpulse/blob/main/tests/test_determinism.py",
+      "note": "The determinism discipline enforced as a CI gate on the public forecasting repo: identical training regardless of global RNG state."
+    }
+  ],
+  "how_to_verify": "Open the demos in your browser; the comparisons execute on YOUR hardware. The re-executable figures verify offline from a local file.",
+  "verification_record": "Demos live and certified across backends including GPU; the org banner (see org-banner-re-executable) re-derived bit-identically Windows vs Linux in public CI.",
+  "limitations": "Public demos cover specific kernels and the published figures. The full 0-ULP contract machinery (fixed-point spec, float-exact GPU summation, cross-backend crypto gates) is private-development; native f64 transcendentals remain excluded from the float-exact contract (vendor libm variance)."
+}

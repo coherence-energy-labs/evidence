@@ -1,0 +1,15 @@
+{
+  "claim": "A native cryptographic suite of 29 primitives -- symmetric, AEAD, KDF, MAC, hash, classical asymmetric (Curve25519/Curve448), and post-quantum (ML-KEM-768, ML-DSA-65, SLH-DSA) -- each verified byte-exact against independent NIST/RFC test vectors, with ML-KEM-768 bidirectionally interoperable with liboqs.",
+  "status": "private-development",
+  "first_published": "2026-07-30",
+  "attestation": "The 29 KAT gates run in CI in private repositories; cross-backend bit-exactness is enforced through a single reference registry across four execution surfaces. Interoperability with liboqs is measured (bidirectional encaps/decaps), not asserted.",
+  "public_traces": [
+    {
+      "kind": "public-repo",
+      "url": "https://github.com/coherence-energy-labs/hazardpulse/blob/main/scripts/verify_forecast.py",
+      "note": "The published receipt scheme (Ed25519, canonical hashing) and its self-contained verifier are public and exercised in CI."
+    }
+  ],
+  "how_to_upgrade_status": "Planned: publish a subset of KAT harnesses with pinned vectors as a runnable package. Counterparty verification: info@coherenceenergylabs.com.",
+  "limitations": "KAT conformance and interop demonstrate functional correctness, not side-channel resistance; no external cryptographic audit has been performed yet."
+}

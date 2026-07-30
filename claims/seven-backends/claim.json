@@ -1,0 +1,15 @@
+{
+  "claim": "One language compiles through seven backends -- VM, C, native x86/ARM, LLVM, WebAssembly, GPU (CUDA/WGSL), and embedded scripting (Luau) -- proven to agree on supported programs.",
+  "status": "private-development",
+  "first_published": "2026-07-30",
+  "attestation": "All seven backends exist, are merged to trunk, and are held to cross-backend agreement gates (including a 220/220 transpiler gate and 4-surface bit-exact crypto gates) in private repositories.",
+  "public_traces": [
+    {
+      "kind": "live-demo",
+      "url": "https://demos.coherenceenergylabs.com",
+      "note": "The WASM and GPU (WGSL) backends run publicly in-browser: a dependency-free .cl-to-WGSL compiler and a self-hosted compiler-as-WASM are deployed in the live demos."
+    }
+  ],
+  "how_to_upgrade_status": "Planned: a public bounded example compiled through multiple backends with published agreement receipts. Deeper verification for counterparties: info@coherenceenergylabs.com.",
+  "limitations": "Backend coverage varies by language feature; agreement gates cover the supported intersection per backend, not every construct on every backend."
+}

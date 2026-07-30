@@ -1,0 +1,25 @@
+{
+  "claim": "HazardPulse forecasts are frozen and Ed25519-signed BEFORE outcomes occur, committed to a public ledger, and independently verifiable by a self-contained verifier that runs no HazardPulse code.",
+  "status": "verified-public",
+  "first_published": "2026-07-30",
+  "evidence": [
+    {
+      "kind": "public-repo",
+      "url": "https://github.com/coherence-energy-labs/hazardpulse",
+      "note": "Scoring pipeline, gate engine, and the committed forecast data under dist/."
+    },
+    {
+      "kind": "ledger",
+      "url": "https://github.com/coherence-energy-labs/hazardpulse/tree/main/dist/data",
+      "note": "Prediction ledger, gate decisions, provenance envelopes, and replay artifacts, committed on schedule with git timestamps."
+    },
+    {
+      "kind": "stranger-verifier",
+      "url": "https://github.com/coherence-energy-labs/hazardpulse/blob/main/scripts/verify_forecast.py",
+      "note": "Python stdlib + `cryptography` only; re-implements the published receipt spec rather than importing producer code."
+    }
+  ],
+  "how_to_verify": "git clone https://github.com/coherence-energy-labs/hazardpulse && cd hazardpulse && python scripts/verify_forecast.py --artifact \"$(ls dist/data/replay/eq_fcst_*.json | tail -n 1)\"",
+  "verification_record": "2026-07-30: 84/84 receipts in replay artifact eq_fcst_20260730_1800.json verified (integrity). Timestamp precedence is establishable from the git commit history of the ledger.",
+  "limitations": "Integrity verification requires no key; authenticity verification requires the published signing public key. Prospective skill is reported honestly in the repository README — early prospective calibrated Brier skill is near climatology; the signed-receipt claim is about evidence discipline, not forecast skill."
+}

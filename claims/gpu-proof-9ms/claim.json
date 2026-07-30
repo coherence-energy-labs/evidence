@@ -1,0 +1,16 @@
+{
+  "claim": "A ground-up zero-knowledge proof stack (field arithmetic through recursive proof composition) generates a million-point FRI proof round on GPU in ~9 ms, bit-identical to the reference prover, with verification fast enough to run client-side in a browser.",
+  "status": "private-development",
+  "status_detail": "The client-side-verification half of this claim is verified-public today via The Gauntlet demo; the prover performance figure is private-development.",
+  "first_published": "2026-07-30",
+  "attestation": "The ~197-module proof stack, its GPU prover, and the bit-identity gates against the reference implementation run in a private repository. The 9 ms figure is a measured benchmark on our hardware, not an extrapolation.",
+  "public_traces": [
+    {
+      "kind": "live-demo",
+      "url": "https://demos.coherenceenergylabs.com",
+      "note": "The Gauntlet: honest and forged computation proofs verified client-side in your browser -- the forged ones fail on your hardware."
+    }
+  ],
+  "how_to_upgrade_status": "Planned: publish a verification package with a pinned proof artifact and the browser verifier. Counterparty verification: info@coherenceenergylabs.com.",
+  "limitations": "Deployed parameterization is ~124-bit security (fp4); strict-128 requires fp5. Aggregation currently collapses low-degree arguments to one FRI; exact-identity checks remain O(N) at audit."
+}

@@ -1,0 +1,25 @@
+{
+  "claim": "The Coherence Energy Labs org-profile banner is a re-executable figure: the solution of (D*L + kappa^2*I) tau = s over a 400-node lattice, computed in exact integer arithmetic, with its receipt committed beside it and a CI gate that re-derives it byte-for-byte on every push.",
+  "status": "verified-public",
+  "first_published": "2026-07-30",
+  "evidence": [
+    {
+      "kind": "source",
+      "url": "https://github.com/coherence-energy-labs/.github/blob/main/tools/render_banner.py",
+      "note": "The generator. Pure-integer field solve; no floats in field or geometry."
+    },
+    {
+      "kind": "receipt",
+      "url": "https://github.com/coherence-energy-labs/.github/blob/main/assets/RECEIPT.json",
+      "note": "Parameters, field hash, and SVG hashes. The field hash is also printed on the banner itself."
+    },
+    {
+      "kind": "public-gate",
+      "url": "https://github.com/coherence-energy-labs/.github/actions/workflows/verify-banner.yml",
+      "note": "Runs on every push and weekly. Goes red if the committed artifact differs from re-derivation by one byte."
+    }
+  ],
+  "how_to_verify": "git clone https://github.com/coherence-energy-labs/.github && cd .github && python tools/render_banner.py --check",
+  "verification_record": "Re-derived byte-identically on Windows (author machine, twice) and on GitHub's Ubuntu runners (public CI). Gate mutation-tested: a single flipped bit in the committed SVG makes --check exit 1.",
+  "limitations": "Determinism claim covers the committed artifact vs re-derivation; SVG rendering (fonts, rasterization) naturally varies by viewer."
+}

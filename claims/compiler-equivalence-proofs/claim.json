@@ -1,0 +1,15 @@
+{
+  "claim": "Compiler optimizations are proven equivalent to the original program over every possible input (2^(64n) for n 64-bit inputs) via SMT, fail-closed, before artifacts ship.",
+  "status": "private-development",
+  "first_published": "2026-07-30",
+  "attestation": "The certified-compilation toolchain (SMT total-equivalence gates, certified superoptimization, transitive composition to the final artifact) exists, is CI-gated, and is exercised continuously in private repositories. We attest to this; you cannot currently check it, and we state that plainly rather than imply otherwise.",
+  "public_traces": [
+    {
+      "kind": "live-demo",
+      "url": "https://demos.coherenceenergylabs.com",
+      "note": "Artifacts produced BY the private toolchain run publicly in-browser (compiler-as-WASM, re-executable figures), demonstrating outputs of the pipeline without exposing it."
+    }
+  ],
+  "how_to_upgrade_status": "A public verification package (pinned artifact + re-runnable equivalence check on a bounded example) is planned; serious counterparties can arrange deeper verification under agreement: info@coherenceenergylabs.com.",
+  "limitations": "Equivalence proofs cover the optimization and lowering steps in the certified lane for supported language constructs; they do not cover OS, hardware, or unverified library boundaries."
+}
