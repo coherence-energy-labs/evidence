@@ -1,5 +1,5 @@
 {
-  "claim": "HazardPulse forecasts are frozen and Ed25519-signed BEFORE outcomes occur, committed to a public ledger, and independently verifiable by a self-contained verifier that runs no HazardPulse code.",
+  "claim": "HazardPulse forecasts are frozen and hash-receipted BEFORE outcomes occur, committed to a public ledger with git-history timestamps, and independently verifiable by a self-contained verifier. Ed25519 signatures apply to cycles after 2026-07-31, when the signing key was provisioned; we discovered and disclosed that earlier production receipts were unsigned.",
   "status": "verified-public",
   "first_published": "2026-07-30",
   "evidence": [
@@ -20,6 +20,6 @@
     }
   ],
   "how_to_verify": "git clone https://github.com/coherence-energy-labs/hazardpulse && cd hazardpulse && python scripts/verify_forecast.py --artifact \"$(ls dist/data/replay/eq_fcst_*.json | tail -n 1)\"",
-  "verification_record": "2026-07-30: 84/84 receipts in replay artifact eq_fcst_20260730_1800.json verified (integrity). Timestamp precedence is establishable from the git commit history of the ledger.",
+  "verification_record": "2026-07-30: 84/84 receipts verified (integrity) on eq_fcst_20260730_1800.json. Same day, executing the authenticity path revealed signature=None on all production receipts (the signing key had never been provisioned in CI) - fixed forward with a published public key (dist/data/evidence/public-key.json) and this claim re-worded. The correction is preserved here deliberately.",
   "limitations": "Integrity verification requires no key; authenticity verification requires the published signing public key. Prospective skill is reported honestly in the repository README — early prospective calibrated Brier skill is near climatology; the signed-receipt claim is about evidence discipline, not forecast skill."
 }
