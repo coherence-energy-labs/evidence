@@ -1,0 +1,29 @@
+{
+  "claim": "Every deployed byte of coherenceenergylabs.com is covered by a SHA-256 manifest signed with this ed25519 key. This entry is an OUT-OF-BAND copy of that key: it lives in a repository the website does not control, so a party who compromises the website origin cannot silently replace the key, the manifest and the signature together.",
+  "status": "verified-public",
+  "first_published": "2026-07-31",
+  "public_key_hex": "a64d4af965fe220ce1c881f70ebabe5355ab9abbf17f7f3d8fb71ee911d2c493",
+  "algorithm": "ed25519",
+  "second_out_of_band_location": "DNS TXT _release-key.coherenceenergylabs.com (live; served by the domain's authoritative nameservers, not by GitHub or the website)",
+  "attestation": "The website publishes /build-manifest.json with a per-artifact SHA-256 table and a signature over the canonical manifest. Verifying with the key fetched from HERE or from DNS (not from the website) establishes that the release was signed by the holder of this key, not merely that the site is internally consistent.",
+  "how_to_verify": [
+    "1. Fetch the key from this entry, or from the DNS TXT record at _release-key.coherenceenergylabs.com. Do NOT take it from the website page you are checking.",
+    "2. Fetch https://coherenceenergylabs.com/build-manifest.json",
+    "3. Verify receipt.signature over the canonical manifest using this public key.",
+    "4. Fetch any listed artifact and confirm its SHA-256 matches the manifest entry."
+  ],
+  "public_traces": [
+    {
+      "kind": "signed-manifest",
+      "url": "https://coherenceenergylabs.com/build-manifest.json",
+      "note": "Live signed release manifest covering every deployed artifact, including the headers policy."
+    },
+    {
+      "kind": "human-readable",
+      "url": "https://coherenceenergylabs.com/build/",
+      "note": "Build Provenance page, regenerated from release data every build and cross-checked against this manifest by an automated freshness gate."
+    }
+  ],
+  "scope": "This key attests the WEBSITE release only. It is not a code-signing key for any product, and it says nothing about the correctness of the software the site describes.",
+  "contact": "security@coherenceenergylabs.com"
+}
