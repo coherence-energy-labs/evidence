@@ -21,5 +21,5 @@
   ],
   "how_to_verify": "git clone https://github.com/coherence-energy-labs/hazardpulse && cd hazardpulse && python scripts/verify_forecast.py --artifact \"$(ls dist/data/replay/eq_fcst_*.json | tail -n 1)\"",
   "verification_record": "2026-07-30: 84/84 receipts verified (integrity) on eq_fcst_20260730_1800.json. Same day, executing the authenticity path revealed signature=None on all production receipts (the signing key had never been provisioned in CI) - fixed forward with a published public key (dist/data/evidence/public-key.json) and this claim re-worded. The correction is preserved here deliberately.",
-  "limitations": "Integrity verification requires no key; authenticity verification requires the published signing public key. Prospective skill is reported honestly in the repository README — early prospective calibrated Brier skill is near climatology; the signed-receipt claim is about evidence discipline, not forecast skill."
+  "limitations": "Integrity verification requires no key; authenticity verification requires the published signing public key. Prospective skill is reported honestly in the repository README - early prospective calibrated Brier skill is near climatology; the signed-receipt claim is about evidence discipline, not forecast skill."
 }

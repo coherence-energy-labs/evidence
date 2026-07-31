@@ -1,15 +1,15 @@
 # Evidence
 
-**Every public claim Coherence Energy Labs makes resolves to an entry in this repository — or it doesn't get made.**
+**Every public claim Coherence Energy Labs makes resolves to an entry in this repository - or it doesn't get made.**
 
-Each entry under [`claims/`](claims/) is a machine-readable `claim.json` stating exactly what is claimed, what its evidence status is, and — where the status permits — how a stranger can verify it with no trust in us. This is the same standard we apply to our own systems (receipts, gates that can say no, falsification-first), applied to our marketing surface.
+Each entry under [`claims/`](claims/) is a machine-readable `claim.json` stating exactly what is claimed, what its evidence status is, and - where the status permits - how a stranger can verify it with no trust in us. This is the same standard we apply to our own systems (receipts, gates that can say no, falsification-first), applied to our marketing surface.
 
 ## Statuses
 
 | Status | Meaning |
 |---|---|
 | `verified-public` | You can check this yourself, today, with linked artifacts and commands. A claim only carries this status if the verification path has actually been executed. |
-| `private-development` | The capability and its gates exist in private repositories. We attest to it; you cannot currently check it. We say so plainly instead of implying otherwise. Verification packages can be arranged for serious counterparties — [contact us](mailto:info@coherenceenergylabs.com). |
+| `private-development` | The capability and its gates exist in private repositories. We attest to it; you cannot currently check it. We say so plainly instead of implying otherwise. Verification packages can be arranged for serious counterparties - [contact us](mailto:info@coherenceenergylabs.com). |
 | `research` | A hypothesis under active investigation. Not a demonstrated capability, and never presented as one. |
 | `retired` / `falsified` | A claim we no longer make, preserved with the reason. Negative results are load-bearing. |
 
@@ -28,7 +28,7 @@ Each entry under [`claims/`](claims/) is a machine-readable `claim.json` stating
 
 ## Why publish attestations at all?
 
-Because the honest alternative to "trust us" is not silence — it is a precise statement of what you *can* and *cannot* check. We build provable-ignorance certificates into our AI systems; this repository is the same idea applied to our own disclosure. When a `private-development` claim gains a public verification path, its status changes here, in a commit you can diff.
+Because the honest alternative to "trust us" is not silence - it is a precise statement of what you *can* and *cannot* check. We build provable-ignorance certificates into our AI systems; this repository is the same idea applied to our own disclosure. When a `private-development` claim gains a public verification path, its status changes here, in a commit you can diff.
 
 ---
 
