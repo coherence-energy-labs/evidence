@@ -1,22 +1,22 @@
 {
   "consistency": {
-    "from_root": "2c969b31d3acc23d99e23e6876458b5b51d5dbbe32e65dcb32f29794ea4613d9",
-    "from_size": 1,
+    "from_root": "dd4a97c39c48c8522d267a2b2494119a8850c65ba1f8c9ccb14d6412efe9c43d",
+    "from_size": 2,
     "proof": [
-      "b0f1f3479123b86c4a8420522b69cca937c229e72374bb0b1d27feabc1f8d9d9"
+      "d959241a6a44b1e47a64c8685faa6a69443ad7581dd6dfa205673ad704072907"
     ],
-    "to_root": "dd4a97c39c48c8522d267a2b2494119a8850c65ba1f8c9ccb14d6412efe9c43d",
-    "to_size": 2
+    "to_root": "a46763947d6338acc36debeaf7b89b1a79d42c8ddc411500239cf17e2007dacd",
+    "to_size": 3
   },
   "head": {
     "log": "coherenceenergylabs.com/transparency",
-    "root": "dd4a97c39c48c8522d267a2b2494119a8850c65ba1f8c9ccb14d6412efe9c43d",
-    "size": 2,
-    "utc": "2026-08-03 01:06 UTC"
+    "root": "a46763947d6338acc36debeaf7b89b1a79d42c8ddc411500239cf17e2007dacd",
+    "size": 3,
+    "utc": "2026-08-03 01:43 UTC"
   },
   "receipt": {
     "alg": "ed25519",
     "public_key": "a64d4af965fe220ce1c881f70ebabe5355ab9abbf17f7f3d8fb71ee911d2c493",
-    "signature": "561976b70c3ac8c9bdacf526686b710fff94753745c803de65e79955787eba212747364e0c558c3fea5ea7ddfcdc9d425cef5992e98713b6ef84c4a02193cc03"
+    "signature": "499afdab443117bbe7b73d7a5646f4388f8690dee34f21705e4b2a504af32a00b055a6944a684ad09ca6ea4fe63ec48eb9748f0db30b2405d456da23ff6cff0b"
   }
 }
