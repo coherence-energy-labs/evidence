@@ -1,0 +1,12 @@
+{
+  "schema": "oneq-public-review-integrity-v1",
+  "sha256": {
+    "LICENSING_AND_DISCLOSURE.md": "28af3c57bdeac1daa8c2138bf744b86f0fcc5e9d448be1fc6f29ded87b5e59b4",
+    "README.md": "d3788bc9a50a9047cb59717504ff4fb794afca74e2f79980a2159e3ca1283b9f",
+    "REVIEW_GATES.md": "4e8e53c4641f760c2c835fa7edb41c0886e0ef07eaef2b8f60d90ee9614e03b4",
+    "check_integrity.py": "a4c8d57383090d839e8b920191376e0fdcd8bef3da1e3c3c91da7265c16f3693",
+    "check_ppt_small.py": "0897d7a4e067ec4d9ec2f45766970318d9e5ba23f2c1af8136b0982922bb3d0a",
+    "proof_note.tex": "ebf6abf5c6a1290cdead36ef1a301c7e9ba1662d2a4b03000b27edd9c97fa717",
+    "verify_closed.py": "294131ec36f527b54c38c5b73e7a808bd92b3c42b27756e72c3a39a96b510732"
+  }
+}
