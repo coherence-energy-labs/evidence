@@ -1,0 +1,85 @@
+\documentclass[11pt]{article}
+\usepackage[margin=0.75in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,booktabs,array,hyperref}
+\hypersetup{colorlinks=true,linkcolor=black,urlcolor=blue,citecolor=blue}
+\newtheorem{proposition}{Proposition}
+\newtheorem{lemma}{Lemma}
+\title{Two-Use Finite-Blocklength Fidelity Activation via a Family of PPT Channels\\\large Constructive research note for independent mathematical review}
+\author{Joshua Philbrick\\Coherence Energy Labs}
+\date{Research candidate, 16 October 2026\\\textbf{Not peer reviewed. No physical superactivation demonstrated.}}
+\begin{document}\maketitle
+\begin{abstract}
+A recently established finite-blocklength definition of quantum-capacity superactivation compares the channel fidelity of joint uses of two zero-capacity channels with the best fidelity attainable by either alone at any blocklength. Parentin, Bergh, Datta and Wilde exhibited a 17-use construction for a fixed PPT channel and a symmetric erasure channel. We examine a proposed higher-dimensional family of PPT channels and an explicit two-use code for its flagged effective channel. For a bit-flip parameter $p=(1+\sqrt d)^{-1}$, the code achieves $F_e=(7-6p+2p^2)/8$ and exceeds the standalone fidelity ceiling $3/4$ for shield dimensions $d\geq22$. The explicit-code arithmetic is independently enclosed in rational intervals and small Choi matrices are numerically cross-checked. The full all-dimensional PPT and reduction arguments are presented as reviewer obligations pending independent confirmation; claims of a first or fully verified physical superactivation experiment are not made.
+\end{abstract}
+
+\section{Question and comparison class}
+Quantum capacity is nonadditive: PPT entanglement-binding channels and symmetric $50\%$ erasure channels can each have zero quantum capacity but have positive joint quantum capacity \cite{smith,parentin}. The 2026 finite-blocklength criterion \cite{parentin} fixes an error threshold $\epsilon$ and demands that the joint $n$-use channel exceed the one-channel fidelities at \emph{every} blocklength. We use $\epsilon=1/4$, qubit entanglement transmission, and compare $F_c((\mathcal P_d\otimes\mathcal A_{2d})^{\otimes n},2)$ to the ceiling $3/4$ for each constituent channel. \emph{Varying $d$ varies the channel itself}; the published 17-use result uses its fixed base construction.
+
+\section{Candidate PPT-channel family}
+Let $u\in\mathbb C^{d\times d}$ be a complex Hadamard matrix, $|u_{ab}|=1$ and $uu^\dagger=dI$. The key systems are qubits, and the two shield systems have dimension $d$ each. Define
+\begin{align}
+\sigma_0&=I_{d^2}/d^2,&\sigma_1&=\frac1d\sum_{a=0}^{d-1}|aa\rangle\langle aa|,\\
+\Gamma_\ell&=\frac12\sum_{i,j=0}^{1}|i,i\oplus\ell\rangle\langle j,j\oplus\ell|\otimes U_{i\ell}\sigma_\ell U_{j\ell}^\dagger,\\
+\rho_d&=(1-p)\Gamma_0+p\Gamma_1,&p&=(1+\sqrt d)^{-1}.
+\end{align}
+For $U_{0\ell}=I$, take $U_{10}=D_u S$, with shield SWAP $S$ and $D_u=\sum_{ab}u_{ab}|ab\rangle\langle ab|$. Let $U_{11}$ be the unitary acting as $u/\sqrt d$ on $\mathrm{span}\{|aa\rangle\}$ and as identity on its orthogonal complement. The proposed channel $\mathcal P_d$ has normalized Choi state $\rho_d$, input and output dimension $2d$.
+
+Positivity of $\rho_d$ follows from the twisted private-state construction, and tracing over the output gives $I_{2d}/(2d)$. The R142 derivation reports that the nontrivial eigenvalue blocks of the partial transpose involve
+\begin{equation}
+\frac{1-p}{2d^2}\pm\frac{p}{2d^{3/2}},\qquad
+\frac{p}{2d}\pm\frac{1-p}{2d^{3/2}}.
+\end{equation}
+Both lower signs vanish at $p=(1+\sqrt d)^{-1}$. This symbolic block decomposition, including multiplicities and exhaustiveness, is an \emph{external referee check}, not an independently completed proof in this public draft. The companion \texttt{check\_ppt\_small.py} independently constructs $\rho_d$ and verifies positivity, trace normalization, and PPT for $d=2,3,4,5$, and detects a deliberately changed mixing parameter that breaks PPT.
+
+\section{Effective flagged channel and explicit code}
+The proposed preprocessing entangles each party's shields and copies the logical key into the erasure input. With half erasure, the claimed effective qubit-input channel is
+\begin{equation}
+\widetilde{\mathcal N}_p(\omega)=\frac12\omega\otimes|0\rangle\langle0|+\frac12\bigl(\mathcal X_p\circ\Delta\bigr)(\omega)\otimes|1\rangle\langle1|,
+\end{equation}
+where $\mathcal X_p(\omega)=(1-p)\omega+pX\omega X$ and $\Delta(\omega)=\tfrac12(\omega+Z\omega Z)$. The private project's source reports a channel-level verification using Knill--Laflamme recovery in the non-erased branch and Helstrom discrimination in the erased branch. That implementation is not independently republished as a complete all-$d$ derivation here: an external audit of the exact CPTP reduction remains necessary.
+
+Now encode one logical qubit into two uses of $\widetilde{\mathcal N}_p$ using
+\begin{equation}
+|0_L\rangle=|++\rangle,\qquad |1_L\rangle=|--\rangle.
+\end{equation}
+Because the two flags are equiprobable and observed by the decoder, there are four branch outcomes. With two kept uses, inverse isometry returns the original qubit. With one flagged use, its $Z$-measurement result sets a correctable phase on the remaining carrier; the recorded bit is wrong with probability $p$. With both flagged, the two classical outcomes reveal the encoded $X$ parity but can have parity error $2p(1-p)$. A classical measure-and-prepare decoder then gives one-half the probability of a correct parity. The resulting branch fidelities are
+\begin{center}
+\begin{tabular}{c c c}\toprule Flags & Probability & Entanglement fidelity\\\midrule
+$00$&$1/4$&$1$\\
+$01,10$&$1/4$ each&$1-p$\\
+$11$&$1/4$&$1/2-p(1-p)$\\\bottomrule\end{tabular}
+\end{center}
+Thus
+\begin{equation}
+F_e=\frac14\left[1+2(1-p)+\frac12-p(1-p)\right]=\boxed{\frac{7-6p+2p^2}{8}}.
+\end{equation}
+
+\begin{proposition}[Algebraic threshold for the explicit flagged code]
+For $d\in\mathbb Z$, $d\geq2$, and $p=(1+\sqrt d)^{-1}$, the explicit code exceeds $F_e=3/4$ if and only if $d\geq22$.
+\end{proposition}
+\begin{proof}
+The inequality is $2p^2-6p+1>0$. Since $0<p<1/2$, the relevant root is $p_*=(3-\sqrt7)/2$. Therefore $p<p_*$, equivalent to $\sqrt d>p_*^{-1}-1$, or $d>(p_*^{-1}-1)^2\simeq21.583$. The smallest integer is 22. Monotonicity follows from $dF_e/dp=(4p-6)/8<0$ and $dp/dd<0$. The standalone tool \texttt{verify\_closed.py} also checks the threshold with exact integer-square-root enclosures and rational arithmetic.
+\end{proof}
+
+\section{Separation from individual channels}
+Assuming $\mathcal P_d$ is PPT and the flagged reduction is valid, $F_c(\mathcal P_d^{\otimes m},2)\leq1/2$ for all $m$ because the output/reference state is PPT. The $50\%$ erasure channel is symmetric/antidegradable and its $m$-shot qubit transmission fidelity is bounded by $3/4$ \cite{parentin}. In one joint use, the erased branch of $\mathcal P_d\otimes\mathcal A_{2d}$ is PPT and contributes no more than $1/2$ fidelity; the kept branch contributes at most 1. Their equal-weight average is therefore at most $3/4$. Consequently the code gives the smallest possible \emph{two-use threshold for this specified $\epsilon=1/4$ criterion}, once all channel-construction obligations have passed review.
+
+\section{Numerical screen and limitations}
+\begin{center}\begin{tabular}{rcc}\toprule Shield $d$ & $F_e$, closed-form code & $F_e>3/4$?\\\midrule
+20 &0.746290843944&No\\
+21 &0.748675191820&No\\
+22 &0.750920054202&Yes\\
+32 &0.767975766467&Yes\\
+64 &0.794753086420&Yes\\
+256 &0.831747404844&Yes\\\bottomrule\end{tabular}\end{center}
+The private ONE\_Q program additionally reports optimized, non-closed-form codes at $d=20$ and 21 with fidelity over $3/4$. Those claims need portable encoder/decoder witnesses and independently rerunnable rigorous positivity/completeness certificates and are deliberately \emph{not proved} by this document. The one-shot bound is fixed to the same $1/4$ error threshold as the paper \cite{parentin}; a general onset threshold under different tolerances is not claimed. No physical PPT-erasure implementation, physical quantum capacity measurement, matter teleportation, or intercontinental quantum link is claimed. No complete novelty survey or independent human peer review has occurred.
+
+\section{External-review checklist}
+Reviewers should independently: (1) rederive all eigenvalue blocks and multiplicities of $\rho_d^{T_B}$; (2) prove the CPTP/Helstrom/Knill--Laflamme reduction uniformly in $d$; (3) verify each decoder is CPTP and the branch fidelities hold; (4) audit the use of the non-asymptotic definition versus asymptotic quantum capacity; and (5) re-search the literature including dimension-scaled private-state channels. The scripts provide small, reproducible counterexample targets; successful scripts do not substitute for those proofs.
+
+\begin{thebibliography}{9}
+\bibitem{smith} G. Smith and J. Yard, Quantum communication with zero-capacity channels, Science \textbf{321}, 1812 (2008).
+\bibitem{parentin} M. Parentin, B. Bergh, N. Datta and M. M. Wilde, \emph{Onset of superactivation of quantum capacity}, arXiv:2604.27042v2 (2026), \url{https://arxiv.org/abs/2604.27042}.
+\bibitem{private} A. Rutkowski, M. Studzinski, P. Cwiklinski and M. Horodecki, Construction and properties of a class of private states in arbitrary dimensions, Phys. Rev. A \textbf{91}, 012335 (2015).
+\end{thebibliography}
+\end{document}
