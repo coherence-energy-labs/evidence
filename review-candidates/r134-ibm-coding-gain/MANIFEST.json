@@ -1,0 +1,14 @@
+{
+  "schema": "oneq-public-review-integrity-v1",
+  "sha256": {
+    "LICENSING_AND_DISCLOSURE.md": "a8c46edb27b72d2a307535fe713ebc1834adbe6647ab90c09e251eb0d59383cb",
+    "README.md": "73984f7e7f2ac58b55624f481461bc3354602534bfb627747120e0e762aa663e",
+    "REVIEW_GATES.md": "84b308960b243ba22cc5390406a104c85a04c93a74f2647dcb535f60234f4774",
+    "bootstrap.py": "68fb64587de4e9d09ad15a5fffa302a2ca4f7e9b841232df127a4c22d7a3b783",
+    "check_integrity.py": "a4c8d57383090d839e8b920191376e0fdcd8bef3da1e3c3c91da7265c16f3693",
+    "hardware_note.tex": "87efbc7572980b6e26a60f82707b0d1dd54bb131fecc71e1446315368bb3a832",
+    "raw_counts_and_decoder.json": "1c26102320ed455c0cc31ea6223ebb05d80cbe76af1aecdd471b9e334d093cee",
+    "v1_negative_result.json": "466a09af0acba52140925c6f5a2acc7f8e476e76ceb975357544d231cf35bcc8",
+    "verify_counts.py": "c7b2bf147b15e6ad04fe6b9678095ab478208d6cc3dda5f4518757bef23c32bc"
+  }
+}

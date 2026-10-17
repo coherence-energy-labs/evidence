@@ -1,0 +1,53 @@
+\documentclass[11pt]{article}
+\usepackage[margin=0.75in]{geometry}
+\usepackage{amsmath,amssymb,booktabs,hyperref}
+\hypersetup{colorlinks=true,linkcolor=black,urlcolor=blue,citecolor=blue}
+\title{A Measured Two-Use Coding Gain in a Flagged Qubit Channel\\\large A reproducible IBM Kingston evidence note}
+\author{Joshua Philbrick\\Coherence Energy Labs}
+\date{16 October 2026\\\textbf{For independent review. Not a superactivation demonstration.}}
+\begin{document}\maketitle
+\begin{abstract}
+We present archived IBM Kingston data for a controlled experiment on the effective flagged qubit channel of Parentin, Bergh, Datta and Wilde (2026), comparing entanglement-fidelity estimates for one and two uses. A first physical-qubit layout yielded a negative gain, $-0.00814$, and failed its preregistered goals. A separately preregistered second layout yielded one-use fidelity $0.63498$, two-use fidelity $0.66111$, and gain $+0.02613$ (reported bootstrap 95\% interval $[0.02269,0.02960]$). All 22 circuit-count tables for each trial are supplied, with the numerical decoder effects and an independently implemented standard-library scorer that reproduces all terms without importing the original experiment's analysis. The full original zero-capacity channel pair was not implemented; the result is a coding gain on the effective channel, not experimental quantum-capacity superactivation. Independent provider attestation and the compiled circuit bytes remain outstanding publication checks.
+\end{abstract}
+
+\section{Scope and theoretical background}
+The effective channel of Ref.~\cite{parentin} is
+\begin{equation}
+\widetilde{\mathcal N}(\rho)=\frac12\rho\otimes|0\rangle\langle0|+\frac12\bigl(\mathcal X_p\circ\Delta\bigr)(\rho)\otimes|1\rangle\langle1|,
+\quad p=\sqrt2-1.
+\end{equation}
+The physical circuit family evaluates the flagged branch with the prescribed dephasing, possible bit flips, and branch-wise decoding. The code for two uses is a two-qubit isometry derived from a symmetric see-saw family, with fully kept, singly erased, and doubly erased flag patterns. It does not physically instantiate an independent PPT channel and an independent $50\%$ erasure channel and does not establish positive joint quantum capacity on hardware.
+
+\section{Experimental description}
+The 2026-10-12 tests used \texttt{ibm\_kingston} with a reference register $R$ and up to two physical carriers $A_1,A_2$. The four one-use circuits and eighteen two-use circuits cover reference/payload $XX$, $YY$, $ZZ$ correlations, two positions of single erasure with and without logical bit flip, and the doubly erased branch's $X/Y/Z$ reference statistics. All circuits have 4,000 recorded shots; gate twirling was enabled with 32 randomizations. The longer two-use branches had five compiled CZ gates in the original record versus one for the one-use reference. The fully erased branch's optimal measure/prepare decoder is applied to the recorded statistics, not as another physical quantum circuit.
+
+The first layout was $(R,A_1,A_2)=(149,148,147)$, job \texttt{db6pvrkvf2bc73d1k8ug}. A subsequent follow-up used $(148,149,150)$, job \texttt{db6q46cvf2bc73d1kek0}, while preserving the analytical protocol. The first failure was used to inform selection of the second layout; the layout change cannot, without additional randomized controls, be taken as identifying a unique device defect.
+
+\section{Independent rescoring}
+For a measured reference/payload pair, entanglement fidelity is
+\begin{equation}
+F_{\rm Bell}=\frac{1+\langle XX\rangle-\langle YY\rangle+\langle ZZ\rangle}{4}.
+\end{equation}
+Let $F_{00}$ denote the two-use kept/kept branch, $F_{10},F_{01}$ the singly erased branches averaged over bit flips of probability $p$, and $F_{11}$ the measure/prepare branch reconstructed from conditioned reference Bloch components and the three archived decoder-effect operators $G_b$. The unconditional scores are
+\begin{equation}
+F^{(1)}=\frac{F_0+F_1}{2},\qquad F^{(2)}=\frac{F_{00}+F_{10}+F_{01}+F_{11}}{4}.
+\end{equation}
+The release's \texttt{verify\_counts.py} uses only the Python standard library. It does not import the source experiment code; it recomputes every probability and rejects missing circuit rows, bad bit strings, non-integer or incomplete shot counts, and malformed decoder-effect matrices.
+
+\begin{center}\begin{tabular}{lrrr}\toprule
+Hardware run & $F^{(1)}$ & $F^{(2)}$ & $\Delta F$\\\midrule
+First layout, failed & 0.6360713 & 0.6279297 & $-0.0081416$\\
+Follow-up layout & 0.6349800 & 0.6611136 & $+0.0261336$\\\bottomrule
+\end{tabular}\end{center}
+The original follow-up analysis reports a 2,000-replicate bootstrap confidence interval $[0.0226918,0.0296038]$ for the gain, with standard error $0.0017875$. The separately seeded multinomial resampling in the public package yields standard error about $0.001818$ and $[0.022651,0.029584]$. These are conditional-on-circuit sampling uncertainties, and do not necessarily include systematic correlations due to gate twirling, device drift, or calibration biases.
+
+\section{Limitations and scope of future claims}
+The supplied count files and source Git object IDs preserve a checkable bit-level snapshot of the author's experiment record, but the public repository contains neither an independently authenticated IBM QPU response nor the frozen provider-native QPY circuits. Re-analysis therefore confirms the arithmetic on the supplied data, not external hardware provenance. The preregistration SHA-256 is recorded but the underlying private text is not included; its chronology remains a reviewer obligation. The proposed next experiment should archive provider-signed or operator-attested jobs, complete native circuits and backend calibration snapshots, while interleaving reference and encoded arms and using block-robust uncertainty estimation.
+
+The nominal noise-free one-use reference of this effective channel is $F^{(1)}_{\rm ideal}=(2-p)/4\simeq0.646447$. In the successful follow-up, the measured two-use score exceeds this theoretical reference. This does not imply physical zero-capacity channel superactivation or outperforming all existing quantum teleportation methods. Public novelty wording should await a targeted literature survey.
+
+\begin{thebibliography}{9}
+\bibitem{parentin} M. Parentin, B. Bergh, N. Datta and M. M. Wilde, \emph{Onset of superactivation of quantum capacity}, arXiv:2604.27042v2 (2026), \url{https://arxiv.org/abs/2604.27042}.
+\bibitem{smith} G. Smith and J. Yard, Quantum communication with zero-capacity channels, Science \textbf{321}, 1812 (2008).
+\end{thebibliography}
+\end{document}
